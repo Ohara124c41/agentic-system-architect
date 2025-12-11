@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+.eggs/
+*.egg
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# IDE
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.venv
+
+# Documentation (included separately in image)
+*.md
+!README.md
+
+# Outputs (generated at runtime)
+outputs/transcript_*.json
+outputs/ADR_*.md
+outputs/traceability_*.md
+outputs/*.txt
+outputs/figures/*.png
+
+# Test and build artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Other
+agentic_system_architect_supp/
+ieee_dataport_dataset/
+*.log

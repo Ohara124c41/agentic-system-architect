@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  agentsysarch:
+    build: .
+    image: agentsysarch:latest
+    container_name: agentic-system-architect
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      # Mount outputs directory to persist results
+      - ./outputs:/app/outputs
+    stdin_open: true
+    tty: true
+
+  # Service for running demo scenarios
+  demo:
+    build: .
+    image: agentsysarch:latest
+    container_name: agentsysarch-demo
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./outputs:/app/outputs
+    command: python scripts/demo_cogent.py
+
+  # Service for generating visualizations
+  visualize:
+    build: .
+    image: agentsysarch:latest
+    container_name: agentsysarch-visualize
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - ./outputs:/app/outputs
+    command: python scripts/visualize_results.py

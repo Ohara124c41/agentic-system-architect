@@ -83,6 +83,42 @@ Core dependencies (see `requirements.txt` for complete list):
 - `pyyaml` - Configuration management
 - `pydantic` - Data validation
 
+### Docker Setup (Recommended)
+
+For maximum reproducibility and ease of use, run via Docker:
+
+```bash
+# Clone repository
+git clone https://github.com/Ohara124c41/agentic-system-architect.git
+cd agentic-system-architect
+
+# Build Docker image
+docker build -t agentsysarch:latest .
+
+# Run demo scenarios
+docker run -e OPENAI_API_KEY=your_key_here agentsysarch:latest
+
+# Or use docker-compose
+cp .env.example .env
+# Edit .env and add your OpenAI API key
+docker-compose up demo
+```
+
+**Docker commands:**
+```bash
+# Run demo scenarios
+docker-compose up demo
+
+# Generate visualizations
+docker-compose up visualize
+
+# Interactive mode
+docker run -it -e OPENAI_API_KEY=your_key agentsysarch:latest python main.py
+
+# Mount outputs to persist results
+docker run -v $(pwd)/outputs:/app/outputs -e OPENAI_API_KEY=your_key agentsysarch:latest
+```
+
 ## Usage
 
 ### Basic Validation
