@@ -1,0 +1,992 @@
+# Technology Profiles Knowledge Base
+# Used for requirement-technology matching without LLM calls
+
+# =============================================================================
+# DATABASE TECHNOLOGIES
+# =============================================================================
+databases:
+  mongodb:
+    display_name: "MongoDB"
+    category: "database"
+    subcategory: "nosql_document"
+    best_for:
+      - document_storage
+      - flexible_schema
+      - horizontal_scaling
+      - unstructured_data
+      - rapid_prototyping
+      - content_management
+      - catalog_data
+      - real_time_analytics
+    not_ideal_for:
+      - complex_joins
+      - acid_transactions
+      - tabular_data
+      - financial_data
+      - relational_data
+      - strong_consistency
+      - complex_queries
+      - reporting_systems
+    requirements_signals:
+      positive:
+        - "schema changes frequently"
+        - "document-like data"
+        - "need to scale horizontally"
+        - "JSON data"
+        - "nested objects"
+      negative:
+        - "need transactions"
+        - "complex joins"
+        - "relational data"
+        - "financial accuracy"
+        - "ACID compliance"
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - postgresql
+      - mysql
+      - neo4j
+
+  postgresql:
+    display_name: "PostgreSQL"
+    category: "database"
+    subcategory: "relational"
+    best_for:
+      - relational_data
+      - complex_queries
+      - complex_joins
+      - acid_transactions
+      - data_integrity
+      - reporting_systems
+      - financial_data
+      - tabular_data
+      - geospatial_data
+      - full_text_search
+    not_ideal_for:
+      - massive_write_throughput
+      - schema_flexibility
+      - horizontal_scaling
+      - document_storage
+    requirements_signals:
+      positive:
+        - "need joins"
+        - "transactions required"
+        - "data integrity"
+        - "SQL queries"
+        - "reporting"
+        - "financial"
+        - "relational"
+        - "tabular"
+      negative:
+        - "billions of writes per second"
+        - "schema changes daily"
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - mysql
+      - sqlite
+      - cockroachdb
+
+  mysql:
+    display_name: "MySQL"
+    category: "database"
+    subcategory: "relational"
+    best_for:
+      - web_applications
+      - read_heavy_workloads
+      - simple_transactions
+      - proven_stability
+      - tabular_data
+      - acid_transactions
+      - complex_joins
+      - data_integrity
+    not_ideal_for:
+      - complex_analytics
+      - json_heavy
+      - geospatial
+      - document_storage
+      - flexible_schema
+      - horizontal_scaling
+    complexity: low
+    learning_curve: gentle
+    typical_alternatives:
+      - postgresql
+      - mariadb
+
+  redis:
+    display_name: "Redis"
+    category: "database"
+    subcategory: "cache_keyvalue"
+    best_for:
+      - caching
+      - session_storage
+      - real_time_leaderboards
+      - pub_sub
+      - rate_limiting
+      - horizontal_scaling
+    not_ideal_for:
+      - primary_storage
+      - complex_queries
+      - complex_joins
+      - large_datasets
+      - durability_critical
+      - acid_transactions
+      - data_integrity
+      - tabular_data
+    complexity: low
+    learning_curve: gentle
+    typical_alternatives:
+      - memcached
+      - postgresql
+
+  sqlite:
+    display_name: "SQLite"
+    category: "database"
+    subcategory: "embedded"
+    best_for:
+      - embedded_applications
+      - mobile_apps
+      - prototyping
+      - single_user
+      - small_datasets
+      - local_storage
+    not_ideal_for:
+      - concurrent_writes
+      - multi_user
+      - high_traffic
+      - distributed_systems
+    complexity: low
+    learning_curve: gentle
+    typical_alternatives:
+      - postgresql
+      - mysql
+
+  neo4j:
+    display_name: "Neo4j"
+    category: "database"
+    subcategory: "graph"
+    best_for:
+      - graph_data
+      - relationship_heavy_queries
+      - social_networks
+      - recommendation_engines
+      - fraud_detection
+      - knowledge_graphs
+      - network_analysis
+      - connected_data
+      - path_finding
+      - pattern_matching
+      - graph_traversal
+      - edges_as_first_class
+      - relationship_modeling
+    not_ideal_for:
+      - tabular_data
+      - simple_crud
+      - high_volume_writes
+      - bulk_analytics
+      - document_storage
+      - time_series_only
+    requirements_signals:
+      positive:
+        - "relationships"
+        - "connections"
+        - "network"
+        - "graph"
+        - "nodes and edges"
+        - "traversal"
+        - "path finding"
+        - "social"
+        - "recommendation"
+        - "fraud"
+        - "knowledge graph"
+        - "connected"
+      negative:
+        - "simple CRUD"
+        - "tabular only"
+        - "no relationships"
+        - "flat data"
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - postgresql
+      - arangodb
+      - neptune
+
+  neptune:
+    display_name: "Amazon Neptune"
+    category: "database"
+    subcategory: "graph"
+    best_for:
+      - graph_data
+      - knowledge_graphs
+      - identity_graphs
+      - fraud_detection
+      - aws_ecosystem
+      - managed_service
+      - rdf_data
+      - sparql_queries
+    not_ideal_for:
+      - simple_applications
+      - non_aws_environments
+      - cost_sensitive
+      - tabular_data
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - neo4j
+      - arangodb
+
+  arangodb:
+    display_name: "ArangoDB"
+    category: "database"
+    subcategory: "multi_model"
+    best_for:
+      - graph_data
+      - document_storage
+      - multi_model_needs
+      - flexible_queries
+      - graph_plus_documents
+      - hybrid_workloads
+    not_ideal_for:
+      - pure_relational
+      - simple_key_value
+      - maximum_graph_performance
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - neo4j
+      - mongodb
+
+  dgraph:
+    display_name: "Dgraph"
+    category: "database"
+    subcategory: "graph"
+    best_for:
+      - graph_data
+      - graphql_native
+      - distributed_graphs
+      - horizontal_scaling
+      - real_time_sync
+    not_ideal_for:
+      - complex_transactions
+      - document_heavy
+      - sql_compatibility
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - neo4j
+      - arangodb
+
+# =============================================================================
+# MACHINE LEARNING MODELS
+# =============================================================================
+ml_models:
+  cnn:
+    display_name: "Convolutional Neural Network (CNN)"
+    category: "ml_model"
+    subcategory: "deep_learning"
+    best_for:
+      - image_classification
+      - image_data
+      - spatial_features
+      - pattern_recognition
+      - computer_vision
+      - video_analysis
+      - medical_imaging
+    not_ideal_for:
+      - tabular_data
+      - linear_relationships
+      - small_datasets
+      - interpretability_required
+      - sequential_data
+      - quick_training
+    requirements_signals:
+      positive:
+        - "image"
+        - "picture"
+        - "photo"
+        - "visual"
+        - "pixel"
+        - "video"
+        - "spatial"
+      negative:
+        - "spreadsheet"
+        - "CSV"
+        - "tabular"
+        - "columns"
+        - "features"
+        - "explain to business"
+        - "interpretable"
+    complexity: high
+    learning_curve: steep
+    typical_alternatives:
+      - random_forest
+      - xgboost
+      - linear_regression
+
+  linear_regression:
+    display_name: "Linear Regression"
+    category: "ml_model"
+    subcategory: "classical_ml"
+    best_for:
+      - linear_relationships
+      - tabular_data
+      - interpretability
+      - baseline_model
+      - continuous_prediction
+      - quick_training
+      - small_datasets
+    not_ideal_for:
+      - non_linear_patterns
+      - image_data
+      - complex_interactions
+      - classification
+    requirements_signals:
+      positive:
+        - "predict price"
+        - "forecast"
+        - "continuous output"
+        - "explain coefficients"
+        - "simple baseline"
+      negative:
+        - "complex patterns"
+        - "categories"
+        - "classes"
+    complexity: low
+    learning_curve: gentle
+    typical_alternatives:
+      - ridge_regression
+      - xgboost
+      - random_forest
+
+  xgboost:
+    display_name: "XGBoost / Gradient Boosting"
+    category: "ml_model"
+    subcategory: "ensemble"
+    best_for:
+      - tabular_data
+      - structured_data
+      - feature_importance
+      - kaggle_competitions
+      - mixed_feature_types
+      - medium_datasets
+      - classification
+      - regression
+    not_ideal_for:
+      - image_data
+      - text_data
+      - sequential_data
+      - real_time_inference
+    requirements_signals:
+      positive:
+        - "tabular"
+        - "structured"
+        - "features"
+        - "columns"
+        - "CSV"
+        - "customer churn"
+        - "fraud detection"
+      negative:
+        - "images"
+        - "real-time"
+        - "millisecond latency"
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - random_forest
+      - lightgbm
+      - catboost
+
+  random_forest:
+    display_name: "Random Forest"
+    category: "ml_model"
+    subcategory: "ensemble"
+    best_for:
+      - tabular_data
+      - feature_importance
+      - robust_predictions
+      - handling_missing_data
+      - classification
+      - regression
+    not_ideal_for:
+      - image_data
+      - sequential_data
+      - extrapolation
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - xgboost
+      - decision_tree
+
+  transformer:
+    display_name: "Transformer / LLM"
+    category: "ml_model"
+    subcategory: "deep_learning"
+    best_for:
+      - natural_language
+      - text_generation
+      - translation
+      - summarization
+      - question_answering
+      - sequence_to_sequence
+    not_ideal_for:
+      - tabular_data
+      - small_datasets
+      - low_latency_required
+      - limited_compute
+    complexity: high
+    learning_curve: steep
+    typical_alternatives:
+      - bert
+      - lstm
+      - traditional_nlp
+
+  lstm:
+    display_name: "LSTM / RNN"
+    category: "ml_model"
+    subcategory: "deep_learning"
+    best_for:
+      - time_series
+      - sequential_data
+      - stock_prediction
+      - sensor_data
+    not_ideal_for:
+      - tabular_data
+      - image_data
+      - long_sequences
+    complexity: high
+    learning_curve: steep
+    typical_alternatives:
+      - transformer
+      - arima
+      - prophet
+
+  gnn:
+    display_name: "Graph Neural Network (GNN)"
+    category: "ml_model"
+    subcategory: "deep_learning"
+    best_for:
+      - graph_data
+      - node_classification
+      - link_prediction
+      - graph_classification
+      - molecular_property_prediction
+      - social_network_analysis
+      - recommendation_systems
+      - knowledge_graph_embedding
+      - embedding_generation
+      - relationship_learning
+      - network_data
+      - edges_as_features
+    not_ideal_for:
+      - tabular_data
+      - image_only
+      - text_only
+      - small_datasets
+      - no_graph_structure
+      - simple_classification
+    requirements_signals:
+      positive:
+        - "graph"
+        - "network"
+        - "nodes"
+        - "edges"
+        - "embeddings"
+        - "relationships"
+        - "connections"
+        - "molecular"
+        - "knowledge graph"
+        - "social network"
+        - "link prediction"
+      negative:
+        - "flat tabular"
+        - "no relationships"
+        - "simple features"
+        - "no structure"
+    complexity: high
+    learning_curve: steep
+    typical_alternatives:
+      - xgboost
+      - random_forest
+      - node2vec
+
+  node2vec:
+    display_name: "Node2Vec"
+    category: "ml_model"
+    subcategory: "graph_embedding"
+    best_for:
+      - node_embeddings
+      - graph_representation
+      - network_analysis
+      - unsupervised_graph_learning
+      - similarity_search
+      - community_detection
+    not_ideal_for:
+      - supervised_prediction
+      - dynamic_graphs
+      - heterogeneous_graphs
+      - end_to_end_learning
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - gnn
+      - deepwalk
+      - line
+
+  graphsage:
+    display_name: "GraphSAGE"
+    category: "ml_model"
+    subcategory: "deep_learning"
+    best_for:
+      - large_graphs
+      - inductive_learning
+      - node_classification
+      - scalable_embeddings
+      - new_node_prediction
+    not_ideal_for:
+      - small_graphs
+      - transductive_only
+      - non_graph_data
+    complexity: high
+    learning_curve: steep
+    typical_alternatives:
+      - gnn
+      - node2vec
+
+# =============================================================================
+# ARCHITECTURE PATTERNS
+# =============================================================================
+architectures:
+  microservices:
+    display_name: "Microservices Architecture"
+    category: "architecture"
+    subcategory: "distributed"
+    best_for:
+      - large_teams
+      - independent_deployments
+      - technology_diversity
+      - horizontal_scaling
+      - fault_isolation
+      - complex_domains
+    not_ideal_for:
+      - small_teams
+      - mvp_stage
+      - simple_applications
+      - tight_deadlines
+      - limited_devops
+      - crud_apps
+    requirements_signals:
+      positive:
+        - "multiple teams"
+        - "independent deployment"
+        - "different languages"
+        - "scale independently"
+        - "10+ developers"
+      negative:
+        - "just me"
+        - "small team"
+        - "MVP"
+        - "prototype"
+        - "simple CRUD"
+        - "tight deadline"
+    complexity: high
+    learning_curve: steep
+    typical_alternatives:
+      - modular_monolith
+      - monolith
+
+  modular_monolith:
+    display_name: "Modular Monolith"
+    category: "architecture"
+    subcategory: "monolithic"
+    best_for:
+      - small_to_medium_teams
+      - small_teams
+      - clear_domain_boundaries
+      - single_deployment
+      - faster_development
+      - easier_debugging
+      - mvp_to_growth
+      - mvp_stage
+      - extensibility
+      - maintainability
+      - testability
+      - simple_crud
+      - tight_deadlines
+      - rapid_deployment
+    not_ideal_for:
+      - massive_scale
+      - polyglot_requirement
+      - independent_scaling
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - microservices
+      - monolith
+
+  monolith:
+    display_name: "Monolithic Architecture"
+    category: "architecture"
+    subcategory: "monolithic"
+    best_for:
+      - rapid_prototyping
+      - small_applications
+      - solo_developer
+      - simple_deployment
+      - small_teams
+      - mvp_stage
+      - tight_timeline
+      - simple_crud
+      - simple_crud_operations
+      - inventory_tracking
+      - quick_time_to_market
+    not_ideal_for:
+      - large_teams
+      - complex_domains
+      - independent_scaling
+      - extensibility
+      - horizontal_scaling
+    requirements_signals:
+      positive:
+        - "just me"
+        - "small team"
+        - "MVP"
+        - "prototype"
+        - "simple CRUD"
+        - "tight deadline"
+        - "2-3 developers"
+        - "launch quickly"
+        - "inventory"
+      negative:
+        - "multiple teams"
+        - "independent deployment"
+        - "100+ developers"
+    complexity: low
+    learning_curve: gentle
+    typical_alternatives:
+      - modular_monolith
+
+  serverless:
+    display_name: "Serverless / FaaS"
+    category: "architecture"
+    subcategory: "cloud_native"
+    best_for:
+      - event_driven
+      - variable_load
+      - cost_optimization
+      - simple_functions
+      - api_backends
+    not_ideal_for:
+      - long_running_processes
+      - stateful_applications
+      - predictable_high_load
+      - cold_start_sensitive
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - containers
+      - traditional_servers
+
+# =============================================================================
+# DEVOPS / INFRASTRUCTURE
+# =============================================================================
+devops:
+  kubernetes:
+    display_name: "Kubernetes"
+    category: "devops"
+    subcategory: "orchestration"
+    best_for:
+      - container_orchestration
+      - large_scale_deployments
+      - multi_service_applications
+      - auto_scaling
+      - self_healing
+      - complex_networking
+    not_ideal_for:
+      - small_applications
+      - single_service
+      - limited_ops_experience
+      - mvp_stage
+      - small_teams
+    requirements_signals:
+      positive:
+        - "many services"
+        - "auto-scale"
+        - "production at scale"
+        - "dedicated ops team"
+        - "multiple environments"
+      negative:
+        - "just one service"
+        - "no ops experience"
+        - "small team"
+        - "MVP"
+        - "prototype"
+    complexity: high
+    learning_curve: steep
+    typical_alternatives:
+      - docker_compose
+      - ecs
+      - heroku
+
+  docker_compose:
+    display_name: "Docker Compose"
+    category: "devops"
+    subcategory: "containers"
+    best_for:
+      - local_development
+      - small_deployments
+      - single_host
+      - simple_orchestration
+      - learning_containers
+      - limited_ops_experience
+      - small_teams
+      - mvp_stage
+      - tight_deadlines
+      - rapid_deployment
+    not_ideal_for:
+      - production_at_scale
+      - multi_host
+      - auto_scaling
+      - large_scale_deployments
+    complexity: low
+    learning_curve: gentle
+    typical_alternatives:
+      - kubernetes
+      - docker_swarm
+      - heroku
+
+  heroku:
+    display_name: "Heroku / PaaS"
+    category: "devops"
+    subcategory: "paas"
+    best_for:
+      - rapid_deployment
+      - mvp_stage
+      - small_teams
+      - managed_infrastructure
+      - prototype
+      - quick_deployment
+      - ease_of_use
+      - minimal_configuration
+    not_ideal_for:
+      - cost_optimization_at_scale
+      - custom_infrastructure
+      - compliance_requirements
+    complexity: low
+    learning_curve: gentle
+    typical_alternatives:
+      - railway
+      - render
+      - fly_io
+
+  ecs:
+    display_name: "AWS ECS (Elastic Container Service)"
+    category: "devops"
+    subcategory: "orchestration"
+    best_for:
+      - aws_ecosystem
+      - container_orchestration
+      - managed_service
+      - moderate_scale
+      - fargate_integration
+      - quick_deployment
+      - ease_of_use
+      - minimal_configuration
+    not_ideal_for:
+      - multi_cloud
+      - kubernetes_native
+      - complex_networking
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - kubernetes
+      - docker_compose
+      - fargate
+
+# =============================================================================
+# VISUALIZATION TOOLS
+# =============================================================================
+visualization:
+  grafana:
+    display_name: "Grafana"
+    category: "visualization"
+    subcategory: "monitoring"
+    best_for:
+      - infrastructure_monitoring
+      - time_series_dashboards
+      - devops_metrics
+      - prometheus_integration
+      - standalone_dashboards
+    not_ideal_for:
+      - embedded_analytics
+      - custom_visualizations
+      - hdf5_data
+      - product_embedded
+      - non_time_series
+    requirements_signals:
+      positive:
+        - "monitoring"
+        - "metrics"
+        - "Prometheus"
+        - "infrastructure"
+        - "standalone dashboard"
+      negative:
+        - "embedded in product"
+        - "custom charts"
+        - "HDF5"
+        - "end-user facing"
+        - "white-label"
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - custom_dashboard
+      - metabase
+      - superset
+
+  metabase:
+    display_name: "Metabase"
+    category: "visualization"
+    subcategory: "bi_tool"
+    best_for:
+      - business_intelligence
+      - sql_databases
+      - self_service_analytics
+      - non_technical_users
+    not_ideal_for:
+      - real_time_data
+      - custom_visualizations
+      - embedded_analytics
+    complexity: low
+    learning_curve: gentle
+    typical_alternatives:
+      - superset
+      - tableau
+
+  custom_dashboard:
+    display_name: "Custom Dashboard (D3.js/Chart.js)"
+    category: "visualization"
+    subcategory: "custom"
+    best_for:
+      - embedded_analytics
+      - product_integration
+      - custom_visualizations
+      - full_control
+      - white_label
+      - hdf5_data
+      - non_standard_formats
+      - embedding_capability
+      - white_labeling
+      - end_user_access
+      - support_for_HDF5_files
+    not_ideal_for:
+      - rapid_prototyping
+      - non_developers
+      - standard_dashboards
+    complexity: high
+    learning_curve: steep
+    typical_alternatives:
+      - grafana
+      - metabase
+      - superset
+
+  superset:
+    display_name: "Apache Superset"
+    category: "visualization"
+    subcategory: "bi_tool"
+    best_for:
+      - business_intelligence
+      - sql_databases
+      - custom_visualizations
+      - embedding_capability
+      - white_labeling
+      - open_source
+      - support_for_HDF5_files
+      - end_user_access
+    not_ideal_for:
+      - real_time_streaming
+      - simple_metrics_only
+      - non_sql_sources
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - metabase
+      - custom_dashboard
+      - tableau
+
+# =============================================================================
+# DATA PIPELINE
+# =============================================================================
+data_pipeline:
+  kafka:
+    display_name: "Apache Kafka"
+    category: "data_pipeline"
+    subcategory: "streaming"
+    best_for:
+      - high_throughput_streaming
+      - event_sourcing
+      - real_time_processing
+      - distributed_messaging
+      - millions_events_per_second
+    not_ideal_for:
+      - low_volume
+      - simple_logging
+      - small_teams
+      - batch_processing
+    requirements_signals:
+      positive:
+        - "millions of events"
+        - "real-time streaming"
+        - "event sourcing"
+        - "distributed"
+        - "high throughput"
+      negative:
+        - "1000 events per day"
+        - "simple logging"
+        - "batch job"
+        - "nightly"
+    complexity: high
+    learning_curve: steep
+    typical_alternatives:
+      - rabbitmq
+      - redis_streams
+      - sqs
+
+  batch_processing:
+    display_name: "Batch Processing (Cron/Airflow)"
+    category: "data_pipeline"
+    subcategory: "batch"
+    best_for:
+      - scheduled_jobs
+      - etl_pipelines
+      - nightly_processing
+      - low_volume
+      - simple_workflows
+    not_ideal_for:
+      - real_time
+      - sub_second_latency
+      - high_volume_streaming
+    complexity: low
+    learning_curve: gentle
+    typical_alternatives:
+      - kafka
+      - spark_streaming
+
+  rabbitmq:
+    display_name: "RabbitMQ"
+    category: "data_pipeline"
+    subcategory: "messaging"
+    best_for:
+      - task_queues
+      - async_processing
+      - moderate_throughput
+      - complex_routing
+    not_ideal_for:
+      - massive_scale
+      - event_replay
+      - long_term_storage
+    complexity: medium
+    learning_curve: moderate
+    typical_alternatives:
+      - kafka
+      - sqs
+      - redis

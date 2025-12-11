@@ -1,0 +1,56 @@
+# Agentic Architecture Governance System Configuration
+# INCOSE Five Whys Methodology Implementation
+
+system:
+  name: "Architecture Governance Agent"
+  version: "1.0.0"
+  description: "Prevents solution-jumping by enforcing requirements validation"
+
+# Agent Configuration
+agents:
+  interceptor:
+    description: "Parses and classifies incoming technology requests"
+    max_retries: 2
+
+  why_validator:
+    description: "Applies INCOSE Five Whys methodology"
+    num_whys: 5  # Standard Five Whys
+    min_whys: 2  # Minimum before proceeding
+    max_whys: 5  # Maximum if user keeps being vague
+
+  evaluator:
+    description: "Matches requirements against technology profiles"
+    match_threshold: 0.7  # Score above this = good match
+    mismatch_threshold: 0.4  # Score below this = clear mismatch
+
+  recommender:
+    description: "Suggests better-fit alternatives"
+    max_alternatives: 3  # Top N alternatives to suggest
+
+# Technology Categories
+categories:
+  - database
+  - ml_model
+  - architecture
+  - devops
+  - visualization
+  - data_pipeline
+
+# Validation Settings
+validation:
+  require_human_approval: true
+  auto_approve_threshold: 0.9  # Auto-approve if match score > this
+  log_all_decisions: true
+
+# Cost Optimization
+cost_optimization:
+  cache_enabled: true
+  cache_ttl_hours: 24
+  use_templates_first: true  # Use rule-based before LLM calls
+
+# Logging
+logging:
+  level: INFO
+  output_dir: "outputs"
+  trace_dir: "logs"
+  save_transcripts: true
