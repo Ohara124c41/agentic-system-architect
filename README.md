@@ -1,5 +1,10 @@
 # Agentic Architecture Mediation System
 
+[![GitHub release](https://img.shields.io/github/v/release/Ohara124c41/agentic-system-architect)](https://github.com/Ohara124c41/agentic-system-architect/releases)
+[![Docker Hub](https://img.shields.io/docker/v/ohara124c41/agentsysarch?label=docker)](https://hub.docker.com/r/ohara124c41/agentsysarch)
+[![License](https://img.shields.io/badge/license-MIT%20with%20Citation-blue)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+
 Multi-agent system implementing Five Whys methodology for requirements elicitation in LLM-assisted technology selection. Prevents solution-jumping by separating dialogue (LLM) from evaluation (deterministic).
 
 Accompanies the paper: **"Agentic Architecture Mediation for LLM Assistants: Preventing Solution-Jumping with Requirements Elicitation"** (IEEE Software, Special Issue on Engineering Agentic Systems, 2025)
